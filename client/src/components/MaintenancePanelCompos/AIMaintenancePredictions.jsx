@@ -6,7 +6,7 @@ import { PiShieldWarningLight } from "react-icons/pi";
 import { FaChartLine } from "react-icons/fa";
 
 const AIMaintenancePredictions = () => {
-  const [expanded, setExpanded] = useState([true, true]); // Default to open for demo
+  const [expanded, setExpanded] = useState([false, false]); // Default to open for demo
 
   const toggleExpand = (index) => {
     setExpanded((prev) =>

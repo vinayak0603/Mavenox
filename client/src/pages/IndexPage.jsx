@@ -22,52 +22,54 @@ const IndexPage = () => {
       <div className="flex-1 flex flex-col bg-[#0f172a] text-white overflow-y-auto">
 
         {/* Top Bar */}
-<div className="relative flex items-center justify-center sm:justify-between px-6 py-4 border-b border-green-800 bg-[#0f172a] gap-2">
-  {/* Logo (centered absolutely on mobile) */}
-  <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
-    <img
-      src="https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png"
-      alt="Logo"
-      className="h-5 w-auto"
-    />
-  </div>
+<div className="sticky top-0 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
+  <div className="relative flex items-center justify-center sm:justify-between gap-2">
+    {/* Logo (centered absolutely on mobile) */}
+    <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
+      <img
+        src="https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png"
+        alt="Logo"
+        className="h-5 w-auto"
+      />
+    </div>
 
-  {/* Desktop system status + Logout (hidden on mobile) */}
-  <div className="hidden sm:flex items-center gap-3 ml-auto">
-    <div className="flex items-center gap-2">
-      <p className="text-xs text-gray-400">System Status</p>
-      <Activity className="text-green-400" size={16} />
-      <p className="text-green-400 text-sm">OPERATIONAL</p>
-      <button className="ml-2 p-1 rounded bg-[#1e293b]">
-        <Moon size={16} className="text-blue-400" />
+    {/* Desktop system status + Logout (hidden on mobile) */}
+    <div className="hidden sm:flex items-center gap-3 ml-auto">
+      <div className="flex items-center gap-2">
+        <p className="text-xs text-gray-400">System Status</p>
+        <Activity className="text-green-400" size={16} />
+        <p className="text-green-400 text-sm">OPERATIONAL</p>
+        <button className="ml-2 p-1 rounded bg-[#1e293b]">
+          <Moon size={16} className="text-blue-400" />
+        </button>
+      </div>
+      <button
+        onClick={() => {
+          if (window.confirm("Are you sure you want to log out?")) {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }
+        }}
+        className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
+      >
+        Logout
       </button>
     </div>
-    <button
-      onClick={() => {
-        if (window.confirm("Are you sure you want to log out?")) {
-          localStorage.removeItem("token");
-          window.location.href = "/";
-        }
-      }}
-      className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
-    >
-      Logout
-    </button>
-  </div>
 
-  {/* Logout for mobile only */}
-  <div className="block sm:hidden ml-auto">
-    <button
-      onClick={() => {
-        if (window.confirm("Are you sure you want to log out?")) {
-          localStorage.removeItem("token");
-          window.location.href = "/";
-        }
-      }}
-      className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
-    >
-      Logout
-    </button>
+    {/* Logout for mobile only */}
+    <div className="block sm:hidden ml-auto">
+      <button
+        onClick={() => {
+          if (window.confirm("Are you sure you want to log out?")) {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }
+        }}
+        className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
+      >
+        Logout
+      </button>
+    </div>
   </div>
 </div>
 

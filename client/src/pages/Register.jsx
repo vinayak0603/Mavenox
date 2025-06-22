@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Register({ setUser }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3); // Default to login screen
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '', code: '' });
 
   useEffect(() => {
@@ -88,31 +88,31 @@ export default function Register({ setUser }) {
 
   return (
     <div className="relative min-h-screen bg-[#0f172a] text-white overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750585318/bridge_s51ptl.jpg')",
-        }}
-      />
+      {/* Background Video (Cloudinary Player Embed) */}
+      <div className="absolute inset-0 z-0">
+        <iframe
+          src="https://player.cloudinary.com/embed/?cloud_name=dkoqcp1g9&public_id=Untitled_video_-_Made_with_Clipchamp_46_zdrvxy&player[autoplay]=true&player[autoplayMode]=on-scroll&player[muted]=true&player[loop]=true&player[controls]=false"
+          className="w-full h-full object-cover"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+        />
+      </div>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-opacity-70 z-10" />
+      <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Foreground Content */}
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        {/* Title outside form box */}
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-4xl font-bold text-gray-900 mb-8 drop-shadow-lg"
+          className="text-4xl font-bold text-gray-100 mb-8 drop-shadow-lg"
         >
           Structural Health Monitoring Software
         </motion.h1>
 
-        {/* Form box with frosted glass effect */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -151,6 +151,13 @@ export default function Register({ setUser }) {
               <input name="email" value={form.email} onChange={handleChange} className={inputClass} placeholder="Email" />
               <input name="password" type="password" value={form.password} onChange={handleChange} className={inputClass} placeholder="Password" />
               <button onClick={login} className={buttonClass}>Login</button>
+              <div className="text-center text-gray-300">or</div>
+              <button
+                onClick={() => setStep(1)}
+                className="bg-gray-700 hover:bg-gray-600 transition-all text-white font-bold py-2 px-4 rounded w-full"
+              >
+                Register Instead
+              </button>
             </div>
           )}
         </motion.div>
