@@ -29,7 +29,8 @@ const IndexPage = () => {
         */}
           <div className="flex items-center gap-2">
   <img
-    src="/public/Geolook-Logo copy.png" // ← Replace with your logo path or URL
+    src="https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png" 
+    // ← Replace with your logo path or URL
     alt="Logo"
     className="h-5 w-auto"
   />
