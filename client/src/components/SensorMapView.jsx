@@ -132,6 +132,7 @@ export default function SensorMapView() {
         {tooltip.visible && <SensorTooltip sensor={tooltip.sensor} />}
       </div>
     </div>
+
     </>
 
   );
