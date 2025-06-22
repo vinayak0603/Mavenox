@@ -128,8 +128,14 @@ export default function Register({ setUser }) {
           transition={{ duration: 0.8 }}
           className="w-full max-w-md bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-xl space-y-6"
         >
-          <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
-            {step === 1 ? 'Create Account' : step === 2 ? 'Email Verification' : 'Welcome Back'}
+          <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2">
+            {step === 1 && 'Create Account'}
+            {step === 2 && 'Email Verification'}
+            {step === 3 && (
+              <>
+                <img src={logo1Url} alt="Logo" className="h-8 sm:h-10 object-contain inline-block" />
+              </>
+            )}
           </h2>
 
           {step === 1 && (
@@ -178,27 +184,22 @@ export default function Register({ setUser }) {
               </div>
               <button onClick={login} className={buttonClass}>Login</button>
 
-              <div className="text-center text-sm text-gray-300">
-                Don’t have an account?{" "}
-                <button onClick={() => setStep(1)} className="text-green-300 hover:underline">
-                  Sign Up
-                </button>
+              <div className="text-center text-sm text-gray-300 flex flex-col items-center gap-1">
+                <div>
+                  Don’t have an account?{" "}
+                  <button onClick={() => setStep(1)} className="text-green-300 hover:underline">
+                    Sign Up
+                  </button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className='mt-6 text-lg font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2'>
+                    in association with
+                  </span>
+                  <img src={logo2Url} alt="Logo 2" className="mt-4 h-6 sm:h-8 object-contain" />
+                </div>
               </div>
             </div>
           )}
-        </motion.div>
-
-        {/* Footer: Logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-white/60 text-sm"
-        >
-          <span>by</span>
-          <img src={logo1Url} alt="Logo 1" className="h-8 object-contain" />
-          <span>in association with</span>
-          <img src={logo2Url} alt="Logo 2" className="h-12 object-contain" />
         </motion.div>
       </div>
     </div>
