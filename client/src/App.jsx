@@ -6,29 +6,45 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:3000/verify', {
+      fetch('https://mavenox.onrender.com/verify', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => res.ok ? res.json() : Promise.reject())
-        .then(data => setUser(data.name))
+        .then(data => {
+          setUser(data.name);
+          setLoading(false);
+        })
         .catch(() => {
           localStorage.removeItem('token');
           setUser(null);
+          setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, []);
+
+  if (loading) return null; // Or loading spinner
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={user ? <IndexPage user={user} /> : <Navigate to="/register" />} />
-        <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route
+          path="/"
+          element={user ? <IndexPage user={user} /> : <Navigate to="/register" replace />}
+        />
+        <Route
+          path="/register"
+          element={!user ? <Register setUser={setUser} /> : <Navigate to="/" replace />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
+
 export default App;

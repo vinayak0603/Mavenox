@@ -1,5 +1,5 @@
 // File: client/src/pages/Register.jsx
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff } from 'lucide-react';
@@ -18,23 +18,6 @@ export default function Register({ setUser }) {
 
   const logo1Url = "https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png";
   const logo2Url = "https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750621233/Logo_qytjcp.png";
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const res = await fetch('https://mavenox.onrender.com/verify', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await res.json();
-        if (res.ok) {
-          setUser(data.name);
-          navigate('/');
-        }
-      }
-    };
-    checkAuth();
-  }, []);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -60,6 +43,7 @@ export default function Register({ setUser }) {
         password: form.password,
       }),
     });
+
     if (res.status === 409) return alert('Email already exists');
     if (res.ok) {
       alert('Confirmation code sent to your email');
@@ -114,6 +98,7 @@ export default function Register({ setUser }) {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden text-white">
+
       {/* Background Effects */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse" />
@@ -132,9 +117,7 @@ export default function Register({ setUser }) {
             {step === 1 && 'Create Account'}
             {step === 2 && 'Email Verification'}
             {step === 3 && (
-              <>
-                <img src={logo1Url} alt="Logo" className="h-8 sm:h-10 object-contain inline-block" />
-              </>
+              <img src={logo1Url} alt="Logo 1" className="h-8 sm:h-10 object-contain inline-block" />
             )}
           </h2>
 
@@ -145,7 +128,6 @@ export default function Register({ setUser }) {
               <input name="password" type="password" onChange={handleChange} className={inputClass} placeholder="Password" />
               <input name="confirm" type="password" onChange={handleChange} className={inputClass} placeholder="Confirm Password" />
               <button onClick={register} className={buttonClass}>Sign Up</button>
-
               <div className="text-center text-sm text-gray-300">
                 Already have an account?{" "}
                 <button onClick={() => setStep(3)} className="text-green-300 hover:underline">
@@ -183,7 +165,6 @@ export default function Register({ setUser }) {
                 </button>
               </div>
               <button onClick={login} className={buttonClass}>Login</button>
-
               <div className="text-center text-sm text-gray-300 flex flex-col items-center gap-1">
                 <div>
                   Don’t have an account?{" "}
@@ -191,11 +172,11 @@ export default function Register({ setUser }) {
                     Sign Up
                   </button>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className='mt-6 text-lg font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2'>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="mt-6 text-lg font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2">
                     in association with
-                  </span>
-                  <img src={logo2Url} alt="Logo 2" className="mt-4 h-6 sm:h-8 object-contain" />
+                  </div>
+                  <img src={logo2Url} alt="Logo 2" className="mt-4 h-12 sm:h-13 object-contain" />
                 </div>
               </div>
             </div>
