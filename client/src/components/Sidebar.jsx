@@ -31,7 +31,7 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
     <>
       {/* Hamburger Icon for Mobile */}
       <div className="lg:hidden fixed top-4 left-4 z-50 border-1 border-green-800">
-        <button onClick={() => setIsOpen(true)} className="text-green-800 bg-gray-800 p-1 rounded">
+        <button onClick={() => setIsOpen(true)} className="text-green-800 bg-gray-800 p-2 rounded">
           <Menu size={20} />
         </button>
       </div>
