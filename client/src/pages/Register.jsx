@@ -11,7 +11,7 @@ export default function Register({ setUser }) {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
       if (token) {
-        const res = await fetch('http://localhost:3000/verify', {
+        const res = await fetch('https://mavenox.onrender.com/verify', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -34,8 +34,9 @@ export default function Register({ setUser }) {
     if (form.password !== form.confirm) return alert('Passwords do not match');
     if (form.password.length < 6) return alert('Password must be at least 6 characters');
 
-    const res = await fetch('http://localhost:3000/register', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+    const res = await fetch('https://mavenox.onrender.com/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: form.name, email: form.email, password: form.password })
     });
     if (res.status === 409) return alert('Email already exists');
@@ -49,8 +50,9 @@ export default function Register({ setUser }) {
 
   const confirm = async () => {
     if (!form.code) return alert('Please enter the confirmation code');
-    const res = await fetch('http://localhost:3000/confirm', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+    const res = await fetch('https://mavenox.onrender.com/confirm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: form.email, code: form.code })
     });
     if (res.ok) {
@@ -63,8 +65,9 @@ export default function Register({ setUser }) {
 
   const login = async () => {
     if (!form.email || !form.password) return alert('Please fill all login fields');
-    const res = await fetch('http://localhost:3000/login', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+    const res = await fetch('https://mavenox.onrender.com/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: form.email, password: form.password })
     });
     const data = await res.json();
@@ -78,8 +81,10 @@ export default function Register({ setUser }) {
     }
   };
 
-  const inputClass = "bg-[#1f2937] text-white border border-gray-600 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-400";
-  const buttonClass = "bg-green-600 hover:bg-green-500 transition-all text-white font-bold py-2 px-4 rounded w-full";
+  const inputClass =
+    'bg-[#1f2937] text-white border border-gray-600 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-400';
+  const buttonClass =
+    'bg-green-600 hover:bg-green-500 transition-all text-white font-bold py-2 px-4 rounded w-full';
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-white p-4">
@@ -93,7 +98,10 @@ export default function Register({ setUser }) {
             <input name="confirm" type="password" onChange={handleChange} className={inputClass} placeholder="Confirm Password" />
             <button onClick={register} className={buttonClass}>Sign Up</button>
             <div className="text-center text-gray-400">or</div>
-            <button onClick={() => setStep(3)} className="bg-gray-700 hover:bg-gray-600 transition-all text-white font-bold py-2 px-4 rounded w-full">
+            <button
+              onClick={() => setStep(3)}
+              className="bg-gray-700 hover:bg-gray-600 transition-all text-white font-bold py-2 px-4 rounded w-full"
+            >
               Login Instead
             </button>
           </div>
