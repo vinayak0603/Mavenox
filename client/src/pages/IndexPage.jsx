@@ -18,11 +18,23 @@ const IndexPage = () => {
 
       <div className="flex-1 flex flex-col bg-[#0f172a] text-white overflow-auto">
         {/* Top Bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 border-b border-[#1e293b] bg-[#0f172a] gap-2">
-          <div className="text-green-400 font-mono text-sm">
+       <div className="sticky top-0 z-30 flex flex-col sm:flex-row justify-between items-start sm:items-center px-6 py-4 border-b border-green-800 bg-[#0f172a] gap-2 backdrop-blur-md bg-opacity-90">
+
+    
+        {/*
+         <div className="text-green-400 font-mono text-sm">
             root@coreva:~# pwd
             <p className="text-lg text-green-500">/sys/monitor/{currentTab.toUpperCase()}</p>
           </div>
+        */}
+          <div className="flex items-center gap-2">
+  <img
+    src="/public/Geolook-Logo copy.png" // ← Replace with your logo path or URL
+    alt="Logo"
+    className="h-5 w-auto"
+  />
+</div>
+
 
           <div className="flex items-center gap-3 flex-wrap">
             <div className="flex items-center gap-2">

@@ -37,14 +37,14 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
       </div>
 
       {/* Sidebar for Desktop */}
-      <div className={`hidden lg:flex flex-col h-screen bg-[#0f172a] text-white transition-all duration-300 border-r border-[#1e293b] ${isOpen ? "w-56" : "w-16"}`}>
+      <div className={`hidden lg:flex flex-col h-screen bg-[#0f172a] text-white transition-all duration-300 border-r border-[#1e293b] ${isOpen ? "w-56" : "w-15"}`}>
         {/* Header */}
         <div
-          className="flex items-center justify-between px-2 py-1 bg-green-400 cursor-pointer h-16"
+          className="flex items-center justify-between px-2 py-1 bg-gray-900 cursor-pointer h-12 "
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="w-40" />
-          <div className="flex text-black">
+          <div className="flex text-white hover:text-green-400">
             {isOpen ? (
               <>
                 <ChevronLeft size={20} />
