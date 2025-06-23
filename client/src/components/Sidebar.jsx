@@ -5,16 +5,19 @@ import {
   AlertTriangle,
   Database,
   Map,
-  Calendar,ChevronLeft,
+  Calendar,
   ThermometerSun,
   Settings,
-  Moon,
   Menu,
   X,
+  LogOut,
 } from "lucide-react";
+import LogoutAlert from "./AlertBoxCompos/LogoutAlert";
 
-const Sidebar = ({ currentTab, setCurrentTab }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Sidebar = ({ currentTab, setCurrentTab, onHover }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const menuItems = [
     { id: "Dashboard", label: "DASHBOARD", icon: <LayoutDashboard size={18} /> },
@@ -27,103 +30,120 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
     { id: "Settings", label: "SETTINGS", icon: <Settings size={18} /> },
   ];
 
+  const handleHover = (state) => {
+    setIsHovered(state);
+    onHover?.(state);
+  };
+
+  const handleLogout = () => setShowAlert(true);
+  const confirmLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+  const cancelLogout = () => setShowAlert(false);
+
   return (
     <>
-      {/* Hamburger Icon for Mobile */}
-      <div className="lg:hidden fixed top-4 left-4 z-50 border-1 border-green-800">
-        <button onClick={() => setIsOpen(true)} className="text-green-800 bg-gray-800 p-2 rounded">
+      {/* Mobile Hamburger Button */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <button onClick={() => setIsMobileOpen(true)} className="text-green-800 bg-gray-800 p-2 rounded">
           <Menu size={20} />
         </button>
       </div>
 
-      {/* Sidebar for Desktop */}
-      <div className={`hidden lg:flex flex-col h-screen bg-[#0f172a] text-white transition-all duration-300 border-r border-[#1e293b] ${isOpen ? "w-56" : "w-15"}`}>
-        {/* Header */}
-        <div
-          className="flex items-center justify-between px-2 py-1 bg-gray-900 cursor-pointer h-12 "
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <div className="w-40" />
-          <div className="flex text-white hover:text-green-400">
-            {isOpen ? (
-              <>
-                <ChevronLeft size={20} />
-                <ChevronLeft size={20} className="-ml-1" />
-              </>
-            ) : (
-              <>
-                <ChevronLeft size={20} className="rotate-180" />
-                <ChevronLeft size={20} className="rotate-180 -ml-1" />
-              </>
-            )}
-          </div>
-        </div>
-
+      {/* Desktop Sidebar */}
+      <div
+        className={`hidden lg:block fixed top-[3.75rem] left-0 z-40 h-[calc(100vh-3.75rem)] text-white border-r border-[#1e293b]
+          transition-all duration-300 ease-in-out overflow-hidden backdrop-blur-md bg-[#0f172a]/60`}
+        style={{ width: isHovered ? "14rem" : "4rem" }}
+        onMouseEnter={() => handleHover(true)}
+        onMouseLeave={() => handleHover(false)}
+      >
         {/* Menu Items */}
-        <div className="flex-1 flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-1 mt-4">
           {menuItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setCurrentTab(item.id)}
-              className={`flex items-center px-4 py-2 text-sm font-mono transition-colors duration-150 
-                ${currentTab === item.id ? "bg-[#1e293b] text-green-400" : "hover:bg-[#1e293b] text-gray-300"}`}
+              className={`flex items-center px-4 py-2 text-sm font-mono rounded-md transition-all duration-200 ease-out
+                ${currentTab === item.id
+                  ? "bg-[#1e293b] text-green-400"
+                  : "hover:bg-[#1e293b] hover:text-green-300 hover:-translate-y-0.5 hover:scale-[1.02] text-gray-300"}`}
             >
               {item.icon}
-              {isOpen && <span className="ml-2">{item.label}</span>}
+              {isHovered && <span className="ml-3">{item.label}</span>}
             </button>
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="mt-auto px-4 py-2 border-t border-[#1e293b] text-xs text-green-400 font-mono">
-          <p>SYSTEM STATUS:</p>
-          <p className="text-green-300 text-xs">Operational</p>
-        </div>
-        <div className="px-4 py-3 border-t border-[#1e293b] flex items-center gap-2">
-          <Moon size={16} />
-          {isOpen && <span className="text-green-400 text-sm">$ DARK MODE</span>}
+        {/* Footer - Logout */}
+        <div className="absolute bottom-5 left-0 w-full px-4 py-3 border-t border-[#1e293b] text-xs font-mono">
+          {!isHovered ? (
+            <div
+              className="flex justify-center text-red-500 transition-transform duration-200 cursor-pointer"
+              onClick={handleLogout}
+            >
+              <LogOut size={20} />
+            </div>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-red-400 hover:text-red-500 transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
+            >
+              <LogOut size={20} />
+              <span className="text-lg font-mono">Logout</span>
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Sidebar for Mobile (Drawer Style) */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 z-40 flex lg:hidden">
-          <div className="w-64 bg-[#0f172a] h-full p-4 flex flex-col text-white">
-            {/* Close button */}
-            <div className="flex justify-end mb-4">
-              <button onClick={() => setIsOpen(false)} className="text-white">
-                <X size={20} />
-              </button>
+      {/* Mobile Sidebar */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex lg:hidden">
+          <div className="w-64 bg-[#0f172a] h-full p-4 flex flex-col justify-between text-white">
+            <div>
+              <div className="flex justify-end mb-4">
+                <button onClick={() => setIsMobileOpen(false)} className="text-white">
+                  <X size={20} />
+                </button>
+              </div>
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setCurrentTab(item.id);
+                    setIsMobileOpen(false);
+                  }}
+                  className={`flex items-center gap-3 px-2 py-2 text-sm font-mono rounded-md transition-all duration-200 ease-out 
+                    ${currentTab === item.id
+                      ? "bg-[#1e293b] text-green-400"
+                      : "hover:bg-[#1e293b] hover:text-green-300 hover:-translate-y-0.5 hover:scale-[1.02] text-gray-300"}`}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </button>
+              ))}
             </div>
 
-            {/* Menu Items */}
-            {menuItems.map((item) => (
+            {/* Logout Button - Mobile */}
+            <div className="mt-6 border-t border-[#1e293b] pt-4">
               <button
-                key={item.id}
                 onClick={() => {
-                  setCurrentTab(item.id);
-                  setIsOpen(false);
+                  setIsMobileOpen(false);
+                  handleLogout();
                 }}
-                className={`flex items-center gap-3 px-2 py-2 text-sm font-mono transition-colors duration-150 
-                  ${currentTab === item.id ? "bg-[#1e293b] text-green-400" : "hover:bg-[#1e293b] text-gray-300"}`}
+                className="flex items-center gap-2 text-red-400 hover:text-red-500 transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
               >
-                {item.icon}
-                <span>{item.label}</span>
+                <LogOut size={20} />
+                <span className="text-base font-mono">Logout</span>
               </button>
-            ))}
-
-            {/* Footer */}
-            <div className="mt-auto pt-4 border-t border-[#1e293b] text-xs font-mono">
-              <p className="text-green-400">SYSTEM STATUS:</p>
-              <p className="text-green-300">Operational</p>
-              <div className="flex items-center mt-2 gap-2">
-                <Moon size={16} />
-                <span className="text-green-400 text-sm">$ DARK MODE</span>
-              </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Logout Confirmation Modal */}
+      <LogoutAlert isOpen={showAlert} onConfirm={confirmLogout} onCancel={cancelLogout} />
     </>
   );
 };

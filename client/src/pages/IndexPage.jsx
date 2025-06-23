@@ -8,75 +8,61 @@ import MapViewPanel from "../Panels/MapViewPanel";
 import MaintenancePanel from "../Panels/MaintenancePanel";
 import EnvDataPanel from "../Panels/EnvDataPanel";
 import DashboardPanel from "../Panels/DashboardPanel";
-import { Moon, Activity } from "lucide-react";
+import { Activity, Moon } from "lucide-react";
 
 const IndexPage = () => {
   const [currentTab, setCurrentTab] = useState("Dashboard");
+  const [sidebarHovered, setSidebarHovered] = useState(false);
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+  };
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
-
-      {/* Main content container */}
-      <div className="flex-1 flex flex-col bg-[#0f172a] text-white overflow-y-auto">
-
-        {/* Top Bar */}
-<div className="sticky top-0 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
-  <div className="relative flex items-center justify-center sm:justify-between gap-2">
-    {/* Logo (centered absolutely on mobile) */}
-    <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
-      <img
-        src="https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png"
-        alt="Logo"
-        className="h-5 w-auto"
-      />
-    </div>
-
-    {/* Desktop system status + Logout (hidden on mobile) */}
-    <div className="hidden sm:flex items-center gap-3 ml-auto">
-      <div className="flex items-center gap-2">
-        <p className="text-xs text-gray-400">System Status</p>
-        <Activity className="text-green-400" size={16} />
-        <p className="text-green-400 text-sm">OPERATIONAL</p>
-        <button className="ml-2 p-1 rounded bg-[#1e293b]">
-          <Moon size={16} className="text-blue-400" />
-        </button>
+    <div className="relative h-screen w-screen overflow-hidden bg-[#0f172a] text-white">
+      {/* Top Bar */}
+      <div className="fixed top-0 left-0 right-5 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
+        <div className="relative flex items-center justify-center sm:justify-between gap-2">
+          <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
+            <img
+              src="https://res.cloudinary.com/dkoqcp1g9/image/upload/v1750591433/Geolook-Logo_wyuybf.png"
+              alt="Logo"
+              className="h-5 w-auto"
+            />
+          </div>
+          <div className="hidden sm:flex items-center gap-3 ml-auto">
+            <div className="flex items-center gap-2">
+              <p className="text-xs text-gray-400">System Status</p>
+              <Activity className="text-green-400" size={16} />
+              <p className="text-green-400 text-sm">OPERATIONAL</p>
+              <button className="ml-2 p-1 rounded bg-[#1e293b]">
+                <Moon size={16} className="text-blue-400" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        onClick={() => {
-          if (window.confirm("Are you sure you want to log out?")) {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }
-        }}
-        className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
-      >
-        Logout
-      </button>
-    </div>
 
-    {/* Logout for mobile only */}
-    <div className="block sm:hidden ml-auto">
-      <button
-        onClick={() => {
-          if (window.confirm("Are you sure you want to log out?")) {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }
-        }}
-        className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded"
-      >
-        Logout
-      </button>
-    </div>
-  </div>
-</div>
+      {/* Sidebar */}
+      <Sidebar
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        onLogout={handleLogout}
+        onHover={setSidebarHovered}
+      />
 
-
-
-        {/* Scrollable Content (Dynamic Panels) */}
-        <div className="flex-1 px-6 py-6">
+      {/* Main Content Area */}
+      <div className="absolute top-0 bottom-0 right-0 left-0 overflow-y-auto z-10">
+        <div
+          className={`
+            pt-[3.75rem] px-6 
+            ${"lg:ml-16"}  /* default content shift for collapsed sidebar */
+          `}
+        >
+          {/* Panels */}
           {currentTab === "Settings" ? (
             <SettingsPanel />
           ) : currentTab === "Alerts" ? (
@@ -96,13 +82,13 @@ const IndexPage = () => {
           ) : (
             <div className="text-xl text-center py-10">{currentTab} is open</div>
           )}
-        </div>
 
-        {/* Bottom Bar (not sticky) */}
-        <div className="px-6 py-2 border-t border-[#1e293b] text-xs font-mono text-gray-400">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-            <p>Last update: 2025-06-20T08:27:23.629Z</p>
-            <p className="text-green-400">Active sensors: 13/13</p>
+          {/* Footer Info */}
+          <div className="mt-8 px-6 py-2 border-t border-[#1e293b] text-xs font-mono text-gray-400">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+              <p>Last update: 2025-06-20T08:27:23.629Z</p>
+              <p className="text-green-400">Active sensors: 13/13</p>
+            </div>
           </div>
         </div>
       </div>

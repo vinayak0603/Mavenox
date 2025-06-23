@@ -176,7 +176,13 @@ export default function Register({ setUser }) {
                   <div className="mt-6 text-lg font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2">
                     in association with
                   </div>
-                  <img src={logo2Url} alt="Logo 2" className="mt-4 h-12 sm:h-13 object-contain" />
+                  <a href="https://mitwpu.edu.in/" target="_blank" rel="noopener noreferrer">
+  <img
+    src={logo2Url}
+    alt="Logo 2"
+    className="mt-4 h-12 sm:h-13 object-contain hover:scale-105 transition-transform duration-200"
+  />
+</a>
                 </div>
               </div>
             </div>
