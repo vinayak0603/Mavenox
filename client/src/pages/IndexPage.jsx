@@ -84,7 +84,7 @@ const IndexPage = () => {
           )}
 
           {/* Footer Info */}
-          <div className="mt-8 px-6 py-2 border-t border-[#1e293b] text-xs font-mono text-gray-400">
+          <div className="mt-8 px-6 py-2 border-t border-green-500 text-xs font-mono text-gray-400">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
               <p>Last update: 2025-06-20T08:27:23.629Z</p>
               <p className="text-green-400">Active sensors: 13/13</p>

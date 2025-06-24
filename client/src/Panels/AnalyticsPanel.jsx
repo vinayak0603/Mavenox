@@ -1,4 +1,3 @@
-// pages/AnalyticsPanel.jsx
 import React from "react";
 import { useSensors } from "../context/SensorContext";
 import SensorsGraph from "../components/SensorsGraph";
@@ -8,23 +7,29 @@ const AnalyticsPanel = () => {
   const { sensors } = useSensors();
 
   return (
-    <div className="bg-gray-900 text-green-400 font-mono p-4">
-      <h1 className="text-2xl mb-6 font-bold">ANALYTICS_PANEL</h1>
+    <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-500 rounded-xl">
+        {/* Header */}
+        <h1
+          className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-yellow-400 via-green-500 to-yellow-400 text-transparent bg-clip-text uppercase text-center"
+        >
+          ANALYTICS PANEL
+        </h1>
 
-      {/* Structural Health Chart */}
-      <StructuralHealthChart />
+        {/* Structural Health Section */}
+        <div className="text-green-400 text-sm mb-1">load_analytics --type=structural_health</div>
+        <p className="text-gray-400 text-xs mb-4">Analyzing structural integrity data...</p>
+        <StructuralHealthChart />
 
-      {/* Sensor Graphs */}
-       <div className="text-green-400 font-mono text-sm mb-1">
-        load_analytics --type=sensor_readings
+        {/* Sensor Graphs Section */}
+        <div className="mt-8 text-green-400 text-sm mb-1">load_analytics --type=sensor_readings</div>
+        <p className="text-gray-400 text-xs mb-4">Analyzing sensor values...</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sensors.map((sensor) => (
+            <SensorsGraph key={sensor.id} sensorId={sensor.id} />
+          ))}
+        </div>
       </div>
-      <p className="text-gray-400 text-xs mb-4 font-mono">Analyzing structural integrity data...</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sensors.map((sensor) => (
-          <SensorsGraph key={sensor.id} sensorId={sensor.id} />
-        ))}
-      </div>
-    </div>
   );
 };
 

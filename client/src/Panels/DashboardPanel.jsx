@@ -22,6 +22,8 @@ import AIMaintenancePredictions from '../components/MaintenancePanelCompos/AIMai
 import PerformanceMetrics from '../components/MaintenancePanelCompos/PerformanceMetrics';
 import PriorityDistribution from '../components/MaintenancePanelCompos/PriorityDistribution';
 import UpcomingMaintenance from '../components/MaintenancePanelCompos/UpcomingMaintenance';
+import SensorPanel from './SensorPanel';
+import AnalyticsPanel from './AnalyticsPanel';
 
 export default function DashboardPanel() {
    
@@ -47,29 +49,13 @@ export default function DashboardPanel() {
       </div>
 
       {/* Alerts section */}
-      <div className="px-4 mt-6">
+      <div className="px-4 mt-6 mb-10">
         <div className="w-full max-w-6xl mx-auto">
           <AlertItemList />
         </div>
       </div>
 
-        <div className="bg-gray-900 text-green-400 font-mono p-4">
-            <h1 className="text-2xl mb-6">ANALYTICS_PANEL</h1>
-      
-            {/* Structural Health Chart */}
-            <StructuralHealthChart />
-      
-            {/* Sensor Graphs */}
-             <div className="text-green-400 font-mono text-sm mb-1">
-              load_analytics --type=sensor_readings
-            </div>
-            <p className="text-gray-400 text-xs mb-4 font-mono">Analyzing structural integrity data...</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {sensors.map((sensor) => (
-                <SensorsGraph key={sensor.id} sensorId={sensor.id} />
-              ))}
-            </div>
-          </div>
+      <AnalyticsPanel/>
 
               <div className="flex flex-col gap-6 p-6">
       {/* Terminal Style Header */}
@@ -133,39 +119,9 @@ export default function DashboardPanel() {
     </div>
 
 
-     <div className="bg-gray-900 text-green-400 font-mono p-4">
-      <h1 className="text-2xl mb-4">SENSOR_DATABASE</h1>
+  <SensorPanel/>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row justify-between gap-4 mb-4">
-        <input
-          type="text"
-          placeholder="SEARCH_SENSORS..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="bg-[#1e293b] text-green-400 px-4 py-2 rounded w-full sm:w-1/2"
-        />
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="bg-[#1e293b] text-green-400 px-4 py-2 rounded w-full sm:w-1/2"
-        >
-          <option value="ALL">ALL_STATUS</option>
-          <option value="GOOD">GOOD</option>
-          <option value="WARNING">WARNING</option>
-          <option value="CRITICAL">CRITICAL</option>
-        </select>
-      </div>
-
-      {/* Sensor List */}
-      <SensorList sensors={sensors} />
-
-      <p className="mt-4 text-xs text-gray-500">
-        Total sensors: {totalSensors}
-      </p>
-    </div>
-
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 mt-10">
     <div className="w-full sm:w-1/2">
       <TemperatureTrend />
     </div>

@@ -117,7 +117,7 @@ const SensorsGraph = ({ sensorId }) => {
 
   return (
     <>
-      <div className="bg-[#0f172a] p-4 rounded-lg shadow-inner border border-cyan-500 w-full min-w-[300px] relative">
+      <div className="bg-[#0f172a] p-4 rounded-lg shadow-inner border border-cyan-500 w-full min-w-[200px] relative">
         {/* Expand Button */}
         <button
           onClick={() => setShowModal(true)}

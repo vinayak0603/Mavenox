@@ -14,9 +14,14 @@ const SensorPanel = () => {
   } = useSensors();
 
   return (
-    <div className="bg-gray-900 text-green-400 font-mono p-4">
-      <h1 className="text-2xl mb-4">SENSOR_DATABASE</h1>
+    <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-500 rounded-xl">
+ <h1
+  className="text-center text-3xl font-extrabold bg-gradient-to-r from-yellow-400 via-green-500 to-yellow-400 text-transparent bg-clip-text uppercase p-2 mb-4"
+>
+  SENSOR DATABASE
+</h1>
 
+<div className="w-full mx-auto border-t border-green-500 mb-5" />
       {/* Filters */}
       <div className="flex flex-col sm:flex-row justify-between gap-4 mb-4">
         <input
