@@ -39,9 +39,9 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function StructuralHealthChart() {
   return (
-    <div className="bg-[#0f172a] rounded-lg p-4 w-full border border-[#1e293b] mb-6">
+    <div className="bg-gray-800 rounded-lg p-4 w-full border border-green-500 mb-6">
       <div className="text-green-400 font-mono text-sm mb-1">
-        root@coreva:~# <span className="text-white">load_analytics --type=structural_health</span>
+        load_analytics --type=structural_health
       </div>
       <p className="text-gray-400 text-xs mb-4 font-mono">Analyzing structural integrity data...</p>
 

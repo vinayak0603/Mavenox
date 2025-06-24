@@ -9,7 +9,7 @@ const AnalyticsPanel = () => {
 
   return (
     <div className="bg-gray-900 text-green-400 font-mono p-4">
-      <h1 className="text-2xl mb-6">ANALYTICS_PANEL</h1>
+      <h1 className="text-2xl mb-6 font-bold">ANALYTICS_PANEL</h1>
 
       {/* Structural Health Chart */}
       <StructuralHealthChart />

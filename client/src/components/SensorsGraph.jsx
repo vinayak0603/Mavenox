@@ -1,17 +1,26 @@
-// components/SensorsGraph.jsx
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { useSensors } from "../context/SensorContext";
 import GraphPopup from "./GraphPopup";
+import { Maximize2 } from "lucide-react";
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
 
 const getStatusColor = (value, type) => {
   if (type === "TEMPERATURE") {
-    if (value > 30) return "#FF0000";     // CRITICAL
-    if (value > 25) return "#FFA500";     // WARNING
-    return "#00FF00";                     // GOOD
+    if (value > 30) return "#FF0000";
+    if (value > 25) return "#FFA500";
+    return "#00FF00";
   }
   return "#00FF00";
 };
@@ -23,13 +32,11 @@ const SensorsGraph = ({ sensorId }) => {
   const [history, setHistory] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  // Load history on mount
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) setHistory(JSON.parse(stored));
   }, [sensorId]);
 
-  // Update history when new data comes in
   useEffect(() => {
     if (!sensor) return;
 
@@ -110,16 +117,25 @@ const SensorsGraph = ({ sensorId }) => {
 
   return (
     <>
-      <div
-        onDoubleClick={() => setShowModal(true)}
-        className="bg-[#0f172a] p-4 rounded-lg shadow-inner border border-cyan-500 w-full min-w-[300px] cursor-pointer"
-      >
+      <div className="bg-[#0f172a] p-4 rounded-lg shadow-inner border border-cyan-500 w-full min-w-[300px] relative">
+        {/* Expand Button */}
+        <button
+          onClick={() => setShowModal(true)}
+          className="absolute top-2 right-2 text-cyan-400 hover:text-white"
+        >
+          <Maximize2 size={16} />
+        </button>
+
+        {/* Title */}
         <h2 className="text-center text-cyan-400 text-md mb-2">
           [{sensor.id.toUpperCase()}_{sensor.type}_DATA]
         </h2>
+
+        {/* Chart */}
         <Line data={chartData} options={chartOptions} />
       </div>
 
+      {/* Modal Popup */}
       <GraphPopup
         isOpen={showModal}
         onClose={() => setShowModal(false)}
