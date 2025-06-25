@@ -5,13 +5,11 @@ import { Moon } from "lucide-react";
 // SystemSettings.jsx (only if needed)
 export default function SystemSettings() {
   return (
-    <div className="bg-gray-800 rounded-2xl shadow-lg p-6 space-y-6 border border-green-900">
+    <div className="bg-gray-900 rounded-2xl shadow-lg p-6 space-y-7 border border-green-900">
       {/* Header */}
-        <div className="text-green-400 font-mono text-sm mb-4">
-          root@coreva:~# <span className="text-white">config --edit</span>
-          <p className="text-xs text-gray-400 mt-1">Loading system configuration...</p>
+      <div className="text-3xl font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text flex items-center justify-center gap-2 mb-5">
+         SYSTEM SETTINGS
         </div>
-      <h2 className="text-white font-bold text-xl tracking-widest">SYSTEM_SETTINGS</h2>
 
       <div className="border border-green-900 rounded-xl p-4 flex items-center justify-between">
         <div className="text-green-400 font-mono text-sm">DISPLAY_MODE</div>
