@@ -32,7 +32,7 @@ export default function TemperatureTrend() {
 
   return (
     <div className="bg-gray-900 p-4 rounded-lg w-full h-[360px] border-1 border-green-700">
-      <h2 className="font-mono text-xl font-bold mb-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">Temperature Trend</h2>
+      <h2 className="font-mono text-xl font-bold mb-5 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text text-center">Temperature Trend</h2>
       <ResponsiveContainer width="100%" height="90%">
         <LineChart data={data}>
           <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />

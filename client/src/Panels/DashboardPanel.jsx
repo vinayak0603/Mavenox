@@ -14,43 +14,59 @@ import MaintenancePanel from './MaintenancePanel';
 
 export default function DashboardPanel() {
   return (
-    <>
-    <div className="bg-[#0f172a] min-h-screen pb-10">
-      {/* Dashboard grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
+    <div className="bg-[#0f172a] min-h-screen pb-10 w-full">
+      {/* Top Grid: Sensor Summary Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4 pt-4 w-full">
         <ActiveSensors />
         <CriticalAlerts />
         <TemperatureMonitor />
         <BatteryHealth />
       </div>
 
-      {/* Alerts section */}
-      <div className="px-4 mt-6 mb-10">
-        <div className="w-full max-w-6xl mx-auto">
+      {/* Alerts Section */}
+      <div className="px-4 mt-6 mb-10 w-full">
+        <div className="w-full max-w-7xl mx-auto">
           <AlertItemList />
         </div>
       </div>
 
-      <AnalyticsPanel/>
+      {/* Analytics Section */}
+      <div className="w-full px-4">
+        <div className="max-w-7xl mx-auto">
+          <AnalyticsPanel />
+        </div>
+      </div>
 
-   <EnvDataPanel/>
+      {/* Environmental Data */}
+      <div className="w-full px-4 mt-10">
+        <div className="max-w-7xl mx-auto">
+          <EnvDataPanel />
+        </div>
+      </div>
 
+      {/* Sensor Table */}
+      <div className="w-full px-4 mt-10 overflow-x-auto">
+        <div className="max-w-7xl mx-auto">
+          <SensorPanel />
+        </div>
+      </div>
 
-  <SensorPanel/>
+      {/* Dual Chart Section (Temperature + Battery) */}
+      <div className="flex flex-col sm:flex-row gap-4 mt-10 px-4 w-full max-w-7xl mx-auto">
+        <div className="w-full sm:w-1/2 min-w-0 overflow-auto">
+          <TemperatureTrend />
+        </div>
+        <div className="w-full sm:w-1/2 min-w-0 overflow-auto">
+          <BatteryLevelsChart />
+        </div>
+      </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 mt-10">
-    <div className="w-full sm:w-1/2">
-      <TemperatureTrend />
+      {/* Maintenance Section */}
+      <div className="w-full px-4 mt-10">
+        <div className="max-w-7xl mx-auto">
+          <MaintenancePanel />
+        </div>
+      </div>
     </div>
-    <div className="w-full sm:w-1/2">
-      <BatteryLevelsChart />
-    </div>
-  </div>
-
-
- <MaintenancePanel/>
-    </div>    
-    </>
-
   );
 }

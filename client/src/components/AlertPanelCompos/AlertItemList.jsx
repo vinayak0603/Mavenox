@@ -55,8 +55,7 @@ const AlertItemList = () => {
   const lastUpdated = new Date().toLocaleString();
 
   return (
-    <div className="bg-gray-900 text-white font-mono border border-green-700 shadow-lg w-full max-w-6xl rounded-xl overflow-hidden mt-10">
-      {/* Header */}
+    <div className="bg-gray-900 text-white font-mono border border-green-700 shadow-lg w-full rounded-xl overflow-hidden mt-10">
   {/* Header */}
 <div className="px-4 py-6 sm:py-8 border-b border-green-500 bg-gray-900 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-center sm:text-left relative">
   {/* Title centered for all screens */}
