@@ -11,7 +11,7 @@ const AnalyticsPanel = () => {
         {/* Header */}
         <h1
           className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold 
-          text-green-500 bg-clip-text uppercase text-center mb-5"
+          bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text uppercase text-center mb-5"
         >
           ANALYTICS PANEL
         </h1>

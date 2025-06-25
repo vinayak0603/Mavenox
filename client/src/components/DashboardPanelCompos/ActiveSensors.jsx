@@ -1,7 +1,7 @@
 // components/ActiveSensors.jsx
 export default function ActiveSensors() {
   return (
-    <div className="bg-gray-800 p-5 rounded-md text-green-400 font-mono w-full h-60 border border-green-800">
+    <div className="bg-gray-900 p-5 rounded-md text-green-400 font-mono w-full h-60 border border-green-800">
       {/* Header */}
       <div className="text-white text-lg font-bold mb-1 flex items-center gap-2">
         <span className="text-green-400">$</span> ACTIVE_SENSORS

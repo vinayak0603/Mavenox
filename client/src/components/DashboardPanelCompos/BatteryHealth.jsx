@@ -22,7 +22,7 @@ export default function BatteryHealth() {
 
     return (
       <div
-        className={`relative bg-gray-800 ${extraClass} ${
+        className={`relative bg-gray-900 ${extraClass} ${
           isPopup ? "p-10 w-full max-w-4xl" : "p-5 w-full h-60"
         } rounded-md font-mono border border-purple-800 text-purple-400 shadow-lg`}
       >

@@ -1,44 +1,18 @@
 // File: pages/DashboardPanel.jsx
 import AlertItemList from '../components/AlertPanelCompos/AlertItemList';
-import StructuralHealthChart from '../components/AnalyticsPanelCompos/StructuralHealthChart';
 import ActiveSensors from '../components/DashboardPanelCompos/ActiveSensors';
 import BatteryHealth from '../components/DashboardPanelCompos/BatteryHealth';
 import CriticalAlerts from '../components/DashboardPanelCompos/CriticalAlerts';
 import TemperatureMonitor from '../components/DashboardPanelCompos/TemperatureMonitor';
-import AcousticEmission from '../components/EnvDataPanelCompos/AcousticEmission';
-import LightIntensity from '../components/EnvDataPanelCompos/LightIntensity';
-import ParticleMatter from '../components/EnvDataPanelCompos/ParticleMatter';
-import VibrationalAnalysis from '../components/EnvDataPanelCompos/VibrationalAnalysis';
-import VocLevels from '../components/EnvDataPanelCompos/VocLevels';
-import WaterLevelAnalysis from '../components/EnvDataPanelCompos/WaterLevelAnalysis';
-import WindSpeedMonitor from '../components/EnvDataPanelCompos/WindSpeedMonitor';
-import SensorList from '../components/SensorList';
-import SensorsGraph from '../components/SensorsGraph';
 import BatteryLevelsChart from '../components/DashboardPanelCompos/BatteryLevelsChart';
 import TemperatureTrend from '../components/DashboardPanelCompos/TemperatureTrend';
-
 import { useSensors } from "../context/SensorContext";
-import AIMaintenancePredictions from '../components/MaintenancePanelCompos/AIMaintenancePredictions';
-import PerformanceMetrics from '../components/MaintenancePanelCompos/PerformanceMetrics';
-import PriorityDistribution from '../components/MaintenancePanelCompos/PriorityDistribution';
-import UpcomingMaintenance from '../components/MaintenancePanelCompos/UpcomingMaintenance';
 import SensorPanel from './SensorPanel';
 import AnalyticsPanel from './AnalyticsPanel';
 import EnvDataPanel from './EnvDataPanel';
 import MaintenancePanel from './MaintenancePanel';
 
 export default function DashboardPanel() {
-   
-  const {
-      sensors,
-      searchTerm,
-      setSearchTerm,
-      statusFilter,
-      setStatusFilter,
-      totalSensors,
-    } = useSensors();
-
-
   return (
     <>
     <div className="bg-[#0f172a] min-h-screen pb-10">

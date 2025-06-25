@@ -16,7 +16,7 @@ const SensorPanel = () => {
   return (
     <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-500 rounded-xl">
  <h1
-  className="text-center text-3xl font-extrabold bg-gradient-to-r from-yellow-400 via-green-500 to-yellow-400 text-transparent bg-clip-text uppercase p-2 mb-4"
+  className="text-center text-3xl font-extrabold bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text uppercase p-2 mb-4"
 >
   SENSOR DATABASE
 </h1>

@@ -60,7 +60,7 @@ const AlertItemList = () => {
   {/* Header */}
 <div className="px-4 py-6 sm:py-8 border-b border-green-500 bg-gray-900 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-center sm:text-left relative">
   {/* Title centered for all screens */}
-  <h1 className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold text-green-500 bg-clip-text uppercase text-center">
+  <h1 className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text uppercase text-center">
     Active Alerts
   </h1>
 

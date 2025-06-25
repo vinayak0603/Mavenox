@@ -19,7 +19,7 @@ export default function TemperatureMonitor() {
   const strokeValue = (percentage / 100) * strokeLength;
 
   return (
-    <div className="bg-gray-800 p-5 rounded-md font-mono w-full h-60 border border-cyan-800 text-cyan-400">
+    <div className="bg-gray-900 p-5 rounded-md font-mono w-full h-60 border border-cyan-800 text-cyan-400">
       {/* Header */}
       <div className="text-white text-lg font-bold mb-1 flex items-center justify-between">
         <div className="flex items-center gap-2">
