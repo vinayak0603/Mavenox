@@ -3,7 +3,7 @@ import AlertItemList from "../components/AlertPanelCompos/AlertItemList";
 
 export default function AlertsPanel() {
   return (
-    <div className="">
+    <div>
       <AlertItemList />
     </div>
   );

@@ -59,7 +59,7 @@ const IndexPage = () => {
         <div
           className={`
             pt-[3.75rem] px-6 
-            ${"lg:ml-10"}  /* default content shift for collapsed sidebar */
+            ${"lg:ml-15"}  /* default content shift for collapsed sidebar */
           `}
         >
           {/* Panels */}
