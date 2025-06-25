@@ -21,7 +21,7 @@ const fadeIn = {
 const EnvDataPanel = () => {
   return (
     <motion.div
-      className="flex flex-col gap-6 p-6 border-1 border-green-500 rounded-xl mt-5"
+      className="flex flex-col gap-6 p-6 border-1 border-green-700 rounded-xl mt-5"
       initial="hidden"
       animate="visible"
       variants={fadeIn}

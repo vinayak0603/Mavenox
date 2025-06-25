@@ -7,7 +7,7 @@ const AnalyticsPanel = () => {
   const { sensors } = useSensors();
 
   return (
-    <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-500 rounded-xl">
+    <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-700 rounded-xl">
         {/* Header */}
         <h1
           className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold 
