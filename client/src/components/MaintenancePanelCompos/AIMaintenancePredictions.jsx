@@ -35,7 +35,7 @@ const AIMaintenancePredictions = () => {
     <div className="bg-[#0f172a] text-white p-4 rounded-lg shadow font-mono">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-gray-600 pb-2">
-        <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
+        <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
           <FiActivity /> AI Maintenance Predictions
         </h2>
         <span className="text-sm text-gray-400">{data.length} Predictions</span>
@@ -55,7 +55,7 @@ const AIMaintenancePredictions = () => {
                   <FaExclamationTriangle />
                 </div>
                 <div>
-                  <p className="text-green-400 font-semibold text-base sm:text-lg">
+                  <p className="bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text font-semibold text-base sm:text-lg">
                     {item.title}
                     <span className="ml-2 text-sm text-green-300">{item.risk}</span>
                   </p>

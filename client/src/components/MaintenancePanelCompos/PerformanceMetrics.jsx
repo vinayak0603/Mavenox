@@ -39,9 +39,9 @@ export default function PerformanceMetrics() {
   };
 
   return (
-    <div className="bg-[#0f172a] p-4 rounded-lg text-white h-64">
-      <h2 className="text-xl font-mono mb-2">📊 Performance Metrics</h2>
-      <div className="h-full"><Bar data={data} options={options} /></div>
+    <div className="bg-gray-900 p-4 rounded-lg text-white h-80 border-1 border-green-500">
+      <h2 className="text-xl font-mono mb-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text"><span className="text-white">📊</span> Performance Metrics</h2>
+      <div className="h-[80%]"><Bar data={data} options={options} /></div>
     </div>
   );
 }

@@ -42,10 +42,10 @@ const ParticleMatter = () => {
   };
 
   return (
-    <div className="w-full max-w-sm xl:max-w-md h-80 bg-gray-800 rounded-2xl shadow-md p-4 flex flex-col font-mono text-white mx-auto border-1 border-green-800">
+    <div className="w-full max-w-sm xl:max-w-md h-80 bg-gray-900 rounded-2xl shadow-md p-4 flex flex-col font-mono text-white mx-auto border-1 border-green-800">
       {/* Header */}
       <div className="text-lg tracking-wide text-center">
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
           <WiDust className="text-4xl" /> PARTICLE_MATTER
         </div>
         <hr className="border-t border-green-800 mt-1" />

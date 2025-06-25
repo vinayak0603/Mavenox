@@ -24,7 +24,7 @@ const IndexPage = () => {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-[#0f172a] text-white">
       {/* Top Bar */}
-      <div className="fixed top-0 left-0 right-5 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
+      <div className="fixed top-0 left-0 right-4 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
         <div className="relative flex items-center justify-center sm:justify-between gap-2">
           <div className="absolute left-1/2 transform -translate-x-1/2 sm:static sm:translate-x-0">
             <img
@@ -55,7 +55,7 @@ const IndexPage = () => {
       />
 
       {/* Main Content Area */}
-      <div className="absolute top-0 bottom-0 right-0 left-0 overflow-y-auto z-10">
+      <div className="absolute top-0 bottom-0 right-0 left-0 overflow-y-auto z-10 bg-gray-900">
         <div
           className={`
             pt-[3.75rem] px-6 

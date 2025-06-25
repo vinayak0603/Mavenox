@@ -30,9 +30,9 @@ export default function PriorityDistribution() {
   };
 
   return (
-    <div className="bg-[#0f172a] p-4 rounded-lg text-white h-80 bg-gray-800">
-      <h2 className="text-xl font-mono mb-2">📊 Priority Distribution</h2>
-      <div className="h-[70%]"><Pie data={data} options={options} /></div>
+    <div className="p-4 rounded-lg text-white h-80 bg-gray-900 border-1 border-green-500">
+      <h2 className="text-xl font-mono mb-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text"><span className="text-white">📊</span> Priority Distribution</h2>
+      <div className="h-[70%] mt-5"><Pie data={data} options={options} /></div>
     </div>
   );
 }

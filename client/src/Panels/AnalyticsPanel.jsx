@@ -10,10 +10,12 @@ const AnalyticsPanel = () => {
     <div className="bg-gray-900 text-green-400 font-mono p-4 mt-10 border-1 border-green-500 rounded-xl">
         {/* Header */}
         <h1
-          className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-yellow-400 via-green-500 to-yellow-400 text-transparent bg-clip-text uppercase text-center"
+          className="w-full sm:w-auto text-2xl sm:text-3xl font-extrabold 
+          text-green-500 bg-clip-text uppercase text-center mb-5"
         >
           ANALYTICS PANEL
         </h1>
+        <div className="w-full mx-auto border-t border-green-500 mb-5" />
 
         {/* Structural Health Section */}
         <div className="text-green-400 text-sm mb-1">load_analytics --type=structural_health</div>

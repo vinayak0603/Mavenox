@@ -20,12 +20,14 @@ const UpcomingMaintenance = () => {
   ];
 
   return (
-    <div className="bg-[#0f172a] text-white p-4 rounded-lg shadow">
-      <h2 className="text-xl font-bold font-mono flex items-center gap-2">📅 Upcoming Maintenance Schedule</h2>
+    <div className="bg-[#0f172a] p-4 rounded-lg shadow">
+            <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
+                 Upcoming Maintenance Schedule
+              </h2>
       <div className="space-y-4 mt-4">
         {tasks.map((task, i) => (
           <div key={i} className="bg-[#1e293b] p-4 rounded-lg border border-gray-700">
-            <div className="flex justify-between text-green-400 font-bold">
+            <div className="flex justify-between font-bold ">
               <p>{task.title}</p>
               <p>{task.system}</p>
             </div>
