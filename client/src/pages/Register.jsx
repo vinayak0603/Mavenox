@@ -1,4 +1,3 @@
-// === File: client/src/pages/Register.jsx ===
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,7 +5,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 export default function Register({ setUser }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1); // 1=register, 2=confirm, 3=login, 4=requestReset, 5=confirmReset
+  const [step, setStep] = useState(3); // Start with Login screen
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -67,7 +66,7 @@ export default function Register({ setUser }) {
 
   const resendCode = async () => {
     setCanResend(false);
-    const res = await fetch('https://mavenox.onrender.com/resend-code', {
+    await fetch('https://mavenox.onrender.com/resend-code', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: form.email }),
@@ -187,10 +186,14 @@ export default function Register({ setUser }) {
             <div className="mt-4 text-sm text-gray-300 text-center">
               Don’t have an account? <button onClick={() => setStep(1)} className="text-green-300 underline">Sign Up</button>
             </div>
-            <div className="mt-4 text-lg text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">in association with</div>
-            <a href="https://mitwpu.edu.in/" target="_blank" rel="noopener noreferrer">
-              <img src={logo2Url} alt="Logo 2" className="h-12 mt-2 hover:scale-105 transition-transform item-center justify-center" />
-            </a>
+            <div className="flex flex-col items-center mt-6">
+              <div className="text-lg bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
+                in association with
+              </div>
+              <a href="https://mitwpu.edu.in/" target="_blank" rel="noopener noreferrer">
+                <img src={logo2Url} alt="Logo 2" className="h-12 mt-2 hover:scale-105 transition-transform" />
+              </a>
+            </div>
           </>}
 
           {step === 4 && <>

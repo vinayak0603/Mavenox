@@ -83,7 +83,7 @@ const WindSpeedMonitor = () => {
         </text>
       </svg>
 
-      <div className="text-cyan-400 text-sm tracking-wide">
+      <div className="text-cyan-400 text-sm tracking-wide mb-7">
         MAX_GUST: {maxGust.toFixed(1)} m/s
       </div>
     </div>
