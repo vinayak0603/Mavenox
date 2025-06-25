@@ -1,58 +1,29 @@
-// File: pages/DashboardPanel.jsx
-import AlertItemList from '../components/AlertPanelCompos/AlertItemList';
-import ActiveSensors from '../components/DashboardPanelCompos/ActiveSensors';
-import BatteryHealth from '../components/DashboardPanelCompos/BatteryHealth';
-import CriticalAlerts from '../components/DashboardPanelCompos/CriticalAlerts';
-import TemperatureMonitor from '../components/DashboardPanelCompos/TemperatureMonitor';
-import BatteryLevelsChart from '../components/DashboardPanelCompos/BatteryLevelsChart';
-import TemperatureTrend from '../components/DashboardPanelCompos/TemperatureTrend';
-import { useSensors } from "../context/SensorContext";
-import SensorPanel from './SensorPanel';
-import AnalyticsPanel from './AnalyticsPanel';
-import EnvDataPanel from './EnvDataPanel';
-import MaintenancePanel from './MaintenancePanel';
+// Panels/MaintenancePanel.jsx
+import React from "react";
+import AIMaintenancePredictions from "../components/MaintenancePanelCompos/AIMaintenancePredictions";
+import PerformanceMetrics from "../components/MaintenancePanelCompos/PerformanceMetrics";
+import PriorityDistribution from "../components/MaintenancePanelCompos/PriorityDistribution";
+import UpcomingMaintenance from "../components/MaintenancePanelCompos/UpcomingMaintenance";
 
-export default function DashboardPanel() {
+const MaintenancePanel = () => {
   return (
-    <div className="bg-[#0f172a] min-h-screen pb-10 w-full overflow-x-hidden">
-      {/* Top Metrics Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4 py-6">
-        <ActiveSensors />
-        <CriticalAlerts />
-        <TemperatureMonitor />
-        <BatteryHealth />
-      </div>
+    <div className="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 bg-[#0f172a] text-white border-1 border-green-700 mt-5 rounded-xl">
+     
+      <div className="md:col-span-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text items-center justify-center gap-2 mb-5 text-center">
+          Maintenance
+      </h2>
+      <div className="w-full mx-auto border-t border-green-500 mb-5" />
 
-      {/* Alerts Section */}
-      <div className="px-4 mt-6">
-        <AlertItemList />
+        <AIMaintenancePredictions />
       </div>
-
-      {/* Analytics Section */}
-      <div className="px-4 mt-10">
-        <AnalyticsPanel />
-      </div>
-
-      {/* Environmental Data Section */}
-      <div className="px-4 mt-10">
-        <EnvDataPanel />
-      </div>
-
-      {/* Sensor Table/Panel */}
-      <div className="px-4 mt-10">
-        <SensorPanel />
-      </div>
-
-      {/* Dual Charts Section */}
-      <div className="px-4 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <TemperatureTrend />
-        <BatteryLevelsChart />
-      </div>
-
-      {/* Maintenance Section */}
-      <div className="px-4 mt-10">
-        <MaintenancePanel />
+      <PerformanceMetrics />
+      <PriorityDistribution />
+      <div className="md:col-span-2">
+        <UpcomingMaintenance />
       </div>
     </div>
   );
-}
+};
+
+export default MaintenancePanel;
