@@ -125,7 +125,7 @@ export default function Register({ setUser }) {
     else setErrors({ code: 'Invalid code or error resetting' });
   };
 
-  const inputClass = 'bg-white/10 text-white border border-gray-500 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300';
+  const inputClass = 'bg-black/40 text-white border border-gray-600 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 backdrop-blur';
   const buttonClass = 'bg-gradient-to-r from-green-500 to-lime-500 hover:from-green-400 hover:to-lime-400 text-white font-bold py-2 px-4 rounded w-full shadow-md';
 
   const renderInput = (name, type = 'text', placeholder = '') => (
@@ -136,17 +136,30 @@ export default function Register({ setUser }) {
   );
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden text-white">
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-green-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+    <div className="relative min-h-screen overflow-hidden text-white font-sans">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+        >
+          <source src="https://ik.imagekit.io/vinayak06/Mavnox/GeoLook/geoLook.mp4?updatedAt=1751028871929" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/20" />
       </div>
+
+      {/* Form Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
         <motion.div
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="w-full max-w-md bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-xl space-y-6"
+          className="w-full max-w-md p-8 rounded-3xl shadow-2xl space-y-6 backdrop-blur-md border border-white/20 bg-white/5"
         >
           <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-white to-green-300 text-transparent bg-clip-text">
             {step === 1 && 'Create Account'}
@@ -177,7 +190,7 @@ export default function Register({ setUser }) {
             {renderInput('email', 'text', 'Email Address')}
             <div className="relative">
               {renderInput('password', showPassword ? 'text' : 'password', 'Password')}
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-2 text-white/60 hover:text-white">
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-2 text-white/70 hover:text-white">
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>

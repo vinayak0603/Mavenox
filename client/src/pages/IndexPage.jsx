@@ -9,6 +9,7 @@ import MaintenancePanel from "../Panels/MaintenancePanel";
 import EnvDataPanel from "../Panels/EnvDataPanel";
 import DashboardPanel from "../Panels/DashboardPanel";
 import { Activity, Moon } from "lucide-react";
+import LogoLoader from "../components/LogoLoader";
 
 const IndexPage = () => {
   const [currentTab, setCurrentTab] = useState("Dashboard");
@@ -22,7 +23,8 @@ const IndexPage = () => {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-[#0f172a] text-white">
+    <>
+      <div className="relative h-screen w-screen overflow-hidden bg-[#0f172a] text-white">
       {/* Top Bar */}
       <div className="fixed top-0 left-0 right-4 z-30 bg-[#0f172a] border-b border-green-800 px-6 py-4">
         <div className="relative flex items-center justify-center sm:justify-between gap-2">
@@ -93,6 +95,8 @@ const IndexPage = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
